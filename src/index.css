@@ -262,8 +262,8 @@ section.chapter { position: relative; }
 .cover .cover-bg {
   position: absolute; inset: 0; z-index: 0;
   background:
-    radial-gradient(120% 80% at 70% 10%, rgba(187,70,46,0.10), transparent 55%),
-    radial-gradient(90% 90% at 20% 90%, rgba(126,12,45,0.12), transparent 60%);
+    radial-gradient(120% 80% at 70% 10%, color-mix(in srgb, var(--accent-1) 10%, transparent), transparent 55%),
+    radial-gradient(90% 90% at 20% 90%, color-mix(in srgb, var(--accent-2) 12%, transparent), transparent 60%);
 }
 .cover .grid-lines {
   position: absolute; inset: 0; z-index: 0; opacity: 0.5;
@@ -978,7 +978,7 @@ section.chapter { position: relative; }
 .proj-dot.is-active { width:26px; border-radius:5px; background:var(--accent-1); }
 .proj-arrows { display:flex; gap:12px; }
 .proj-arrows button { width:54px; height:54px; border-radius:50%; border:1px solid var(--line-strong); background:transparent; color:var(--text-2); display:grid; place-items:center; cursor:pointer; transition:color .4s var(--ease), border-color .4s var(--ease), background .4s var(--ease); }
-.proj-arrows button:hover:not(:disabled) { color:var(--text-1); border-color:var(--accent-1); background:rgba(187,70,46,0.12); }
+.proj-arrows button:hover:not(:disabled) { color:var(--text-1); border-color:var(--accent-1); background:color-mix(in srgb, var(--accent-1) 12%, transparent); }
 .proj-arrows button:disabled { opacity:0.3; cursor:default; }
 
 .proj-modal { position:fixed; inset:0; z-index:300; display:none; }
@@ -997,7 +997,7 @@ section.chapter { position: relative; }
 .proj-stage-img video { width:100%; height:100%; object-fit:contain; opacity:0; transition:opacity .5s var(--ease); }
 .proj-stage-img video.loaded { opacity:1; }
 .proj-stage-nav { position:absolute; top:50%; transform:translateY(-50%); z-index:4; width:50px; height:50px; border-radius:50%; border:1px solid var(--line-strong); background:rgba(15,17,21,0.66); color:var(--text-1); display:grid; place-items:center; cursor:pointer; backdrop-filter:blur(6px); transition:border-color .3s var(--ease), background .3s var(--ease); }
-.proj-stage-nav:hover { border-color:var(--accent-1); background:rgba(187,70,46,0.2); }
+.proj-stage-nav:hover { border-color:var(--accent-1); background:color-mix(in srgb, var(--accent-1) 20%, transparent); }
 .proj-stage-nav.prev { left:16px; }
 .proj-stage-nav.next { right:16px; }
 .proj-stage-caption { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:16px; font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--text-2); }
