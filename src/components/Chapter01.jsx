@@ -16,7 +16,7 @@ export default function Chapter01() {
             <span className="ch-num">Capítulo 01</span>
             <span className="ch-kicker">El Reto</span>
           </div>
-          <h2 className="display" data-words>Suburbia <em>Studio</em></h2>
+          <h2 className="display" data-words>Suburbia <em>Satélite</em></h2>
         </div>
         <div className="hero-facts" data-stagger="90">
           <div className="f" data-reveal>
