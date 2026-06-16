@@ -96,8 +96,8 @@ export default function Chapter02() {
         </div>
       </div>
 
-      {/* Tall scroll track — pins the stage and scrubs the video across 1000vh. */}
-      <div className="seq" ref={sectionRef} style={{ height: '1000vh' }}>
+      {/* Tall scroll track — pins the stage and scrubs the video across 2000vh. */}
+      <div className="seq" ref={sectionRef} style={{ height: '2000vh' }}>
         <div className="seq-sticky">
           <div className="seq-stage">
             <video
