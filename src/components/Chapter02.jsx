@@ -8,15 +8,6 @@ const disciplines = [
   ['05', 'Eléctrica'],
 ];
 
-// Per-stage captions (ported from the original sticky-sequence script).
-const captions = [
-  'Esqueleto estructural — cimentación, columnas, trabes y las losas de mezzanine / azotea a +3.94 m y +7.87 m.',
-  'Intención arquitectónica — envolvente, muros divisorios, circulación vertical y acabados resueltos a LOD 350.',
-  'Sistemas MEP — instalaciones hidrosanitarias, protección contra incendios, HVAC y eléctricas trazadas y coordinadas en 3D.',
-  'Detección de interferencias — todos los conflictos entre disciplinas identificados y resueltos en Navisworks antes de llegar a obra.',
-  'Modelo federado — todas las disciplinas integradas en un único gemelo digital coordinado.',
-];
-
 const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
 // Ch02 · Gemelo Digital — canvas scroll-scrub of the discipline-sequence video.
@@ -169,7 +160,6 @@ export default function Chapter02() {
                   </div>
                 ))}
               </div>
-              <p className="seq-caption">{captions[idx]}</p>
             </div>
           </div>
           <div className="seq-progress"><i ref={progressRef} /></div>
