@@ -101,7 +101,15 @@ export default function Chapter02() {
     const onResize = () => { sizeCanvas(); onScroll(); };
     const onMeta = () => {
       durationRef.current = video.duration || 0;
-      video.pause();
+      // iOS Safari won't decode any frames until playback has started at
+      // least once — silently warm it up, then pause immediately. Muted
+      // playback is allowed without a user gesture.
+      const playPromise = video.play();
+      if (playPromise && playPromise.then) {
+        playPromise.then(() => video.pause()).catch(() => video.pause());
+      } else {
+        video.pause();
+      }
       sizeCanvas();
       update();
     };
@@ -135,19 +143,21 @@ export default function Chapter02() {
         </div>
       </div>
 
-      {/* Hidden source video — decoded frames are drawn to the canvas. */}
-      <video
-        ref={videoRef}
-        id="ch02-video" muted playsInline preload="auto"
-        src="uploads/videos/ch02-secuencia/ch02-secuencia-disciplinas.mp4"
-        style={{ position: 'absolute', width: 0, height: 0, opacity: 0, pointerEvents: 'none' }}
-      />
-
       {/* Tall scroll track — pins the canvas stage and scrubs across 450vh. */}
       <div className="seq" ref={sectionRef} style={{ height: '450vh' }}>
         <div className="seq-sticky">
           <div className="seq-stage">
-            <canvas ref={canvasRef} style={{ width: '100%', height: '100%', display: 'block', background: '#0a0a0a' }} />
+            {/* Hidden source video — decoded frames are drawn to the canvas.
+                Kept at full size (not 0x0) and opacity:0: iOS Safari skips
+                decoding zero-size video elements, so this needs real
+                dimensions to actually buffer/seek frames. */}
+            <video
+              ref={videoRef}
+              id="ch02-video" muted playsInline preload="auto"
+              src="uploads/videos/ch02-secuencia/ch02-secuencia-disciplinas.mp4"
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0, pointerEvents: 'none', zIndex: 0 }}
+            />
+            <canvas ref={canvasRef} style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%', display: 'block', background: '#0a0a0a' }} />
           </div>
           <div className="seq-overlay">
             <div className="wrap">
